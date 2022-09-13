@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Category;
+use App\Models\Movie;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +17,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $category = Category::factory()->create(['name' => 'Comédie']);
+        Category::factory()->create(['name' => 'Action']);
+        $categories = Category::factory(8)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Movie::factory(20)->for($categories->random())->create();
+        // Movie::factory(20)->for($category)->create();
+        Movie::factory(20)->create(function () use ($categories) {
+            return ['category_id' => $categories->random()];
+        });
+
+        for ($i = 0; $i < 20; $i++) {
+            Movie::factory()->create(['category_id' => $categories->random()]);
+        }
     }
 }
