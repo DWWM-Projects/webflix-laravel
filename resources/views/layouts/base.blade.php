@@ -17,12 +17,12 @@
     <header class="flex flex-row justify-between items-center p-3">
         <div class="flex flex-row items-center gap-3">
             <h1 class="flex items-center text-5xl">{{ config('app.name') }}</h1>
-            <a class="flex items-center text-3xl hover:text-white" href="/">Accueil</a>
+            <a class="flex items-center text-3xl hover:text-white" href="{{ route('home') }}">Accueil</a>
             <a class="flex items-center text-3xl hover:text-white" href="#">Catégories</a>
             <a class="flex items-center text-3xl hover:text-white" href="#">Films</a>
             <a class="flex items-center text-3xl hover:text-white" href="#">Acteurs</a>
             <a class="flex items-center text-3xl hover:text-white" href="#">Contacts</a>
-            <a class="flex items-center text-3xl hover:text-white" href="/about">A propos</a>
+            <a class="flex items-center text-3xl hover:text-white" href="{{ route('about') }}">A propos</a>
         </div>
         <div class="flex flex-row items-center gap-3">
             <a class="flex items-center text-3xl hover:text-white" href="#">Login</a>

@@ -21,11 +21,11 @@ Route::get('/', function () {
         'html' => '<p>Salut</p>',
         'cars' => ['Ferrari', 'Porsche', 'Renault'],
     ]);
-});
+})->name('home');
 
 Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/about', [AboutController::class, 'index']);
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
-Route::get('/about/{user}', [AboutController::class, 'user']);
+Route::get('/about/{user}', [AboutController::class, 'user'])->name('about-users');
 

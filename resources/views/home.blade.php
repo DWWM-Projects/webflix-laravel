@@ -19,7 +19,7 @@
     </ul>
 
     <div class="text-center text-blue-600 text-xl hover:text-white my-3">
-        <a href="/about">A propos</a>
+        <a href="{{ route('about') }}">A propos</a>
     </div>
 
 @endsection
