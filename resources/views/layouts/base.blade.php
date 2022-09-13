@@ -7,11 +7,33 @@
     <title>
         @section('title') Webflix @show
     </title>
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
-<body>
+<body class="bg-gray-200 font-[Nunito]">
+
+    <header class="flex flex-row justify-between items-center p-3">
+        <div class="flex flex-row items-center gap-3">
+            <h1 class="flex items-center text-5xl">{{ config('app.name') }}</h1>
+            <a class="flex items-center text-3xl hover:text-white" href="/">Accueil</a>
+            <a class="flex items-center text-3xl hover:text-white" href="#">Catégories</a>
+            <a class="flex items-center text-3xl hover:text-white" href="#">Films</a>
+            <a class="flex items-center text-3xl hover:text-white" href="#">Acteurs</a>
+            <a class="flex items-center text-3xl hover:text-white" href="#">Contacts</a>
+            <a class="flex items-center text-3xl hover:text-white" href="/about">A propos</a>
+        </div>
+        <div class="flex flex-row items-center gap-3">
+            <a class="flex items-center text-3xl hover:text-white" href="#">Login</a>
+            <a class="flex items-center text-3xl hover:text-white" href="#">Register</a>
+        </div>
+    </header>
+
     @yield('content')
+
+    <footer class="w-full h-24 flex flex-row justify-center items-center text-2xl text-bold">
+        Copyright &copy; {{ now()->year }} - {{ config('app.name') }}
+    </footer>
 
 </body>
