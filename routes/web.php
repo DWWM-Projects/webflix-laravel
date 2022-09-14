@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,11 +27,19 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/about', [AboutController::class, 'index'])->name('about');
-
-Route::get('/about/{user}', [AboutController::class, 'user'])->name('about-users');
+Route::get('/a-propos', [AboutController::class, 'index'])->name('about');
+Route::get('/a-propos/{user}', [AboutController::class, 'user'])->name('about-users');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-
+Route::get('/categories/nouvelle', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/categories/nouvelle', [CategoryController::class, 'store']);
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/categories/{category}/modifier', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{category}/modifier', [CategoryController::class, 'update']);
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.delete');
 
+
+Route::get('/films', [MovieController::class, 'index'])->name('movies');
+Route::get('/films/nouveau', [MovieController::class, 'create'])->name('movies.create');
+Route::post('/films/nouveau', [MovieController::class, 'store']);
+Route::get('/films/{movie}', [MovieController::class, 'show'])->name('movies.show');
