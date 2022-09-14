@@ -11,11 +11,12 @@
         <div class="p-6">
             <a class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2" href="{{ route('movies.create') }}">Ajouter un film</a>
         </div>
-        <div class="flex flex-row flex-nowrap gap-3 p-6">
+        <div class="flex flex-row flex-wrap justify-between gap-3 p-6">
             @foreach ($movies as $movie)
                 <div class="flex flex-col w-1/4 text-center p-3 bg-white border-black cursor-pointer rounded-lg">
                     <h2 class="text-2xl mb-3">{{ $movie->title }}</h2>
-                    <p class="mb-3">{{ $movie->synopsis }}</p>
+                    {{-- <p class="mb-3">{{ $movie->synopsis }}</p> --}}
+                    <img src="{{ $movie->cover }}" alt="">
                     <p class="text-xl text-bold">{{ $movie->duration }} minutes</p>
                     {{-- <p>{{ $movie->category->name }}</p> --}}
 

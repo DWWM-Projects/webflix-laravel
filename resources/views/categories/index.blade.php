@@ -19,7 +19,7 @@
             <a class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2" href="{{ route('categories.create') }}">Créer une catégorie</a>
         </div>
 
-        <div class="flex flex-row flex-nowrap gap-3 p-6">
+        <div class="flex flex-row flex-wrap justify-between gap-3 p-6">
             @foreach ($categories as $category)
                 <div class="flex flex-col w-1/4 text-center p-3 bg-white border-black cursor-pointer rounded-lg">
                     <h2 class="text-3xl mb-3">

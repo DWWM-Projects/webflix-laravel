@@ -8,6 +8,7 @@
 
     <div class="flex flex-col w-2/4 mx-auto text-center p-3 bg-white rounded-lg my-6">
         <h1 class="text-center text-5xl my-6">{{ $movie->title }}</h1>
+        <img src="{{$movie->cover}}" alt="">
         <p class="mb-3">{{ $movie->synopsis }}</p>
         <p class="text-xl text-bold">{{ $movie->duration }} minutes</p>
     </div>

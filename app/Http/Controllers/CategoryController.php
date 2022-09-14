@@ -11,7 +11,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('categories.index', [
-            'categories' => Category::paginate(4),
+            'categories' => Category::paginate(6),
         ]);
     }
 
@@ -39,6 +39,8 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
+        
+
         return view('categories.edit', [
             'category' => $category,
         ]);
@@ -46,6 +48,8 @@ class CategoryController extends Controller
 
     public function update(Category $category, Request $request)
     {
+        $categoryName = $category->name;
+
         $request->validate([
             'name' => 'required|min:2|unique:categories,name,'.$category->id,
         ]);
@@ -55,7 +59,7 @@ class CategoryController extends Controller
             // Ajouter le guarded dans App/models/Category
         ]);
 
-        return redirect()->route('categories')->with('status', 'La catégorie '.$category->name.' a été modifiée.');
+        return redirect()->route('categories')->with('status', 'La catégorie '.$categoryName.' a été modifiée en '.$category->name.'.');
     }
 
     public function show(Category $category)
