@@ -10,4 +10,10 @@ class Category extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function movies()
+    {
+        // One category to Many movies
+        return $this->hasMany(Movie::class);
+    }
 }

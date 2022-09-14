@@ -24,7 +24,7 @@
                 <div class="flex flex-col w-1/4 text-center p-3 bg-white border-black cursor-pointer rounded-lg">
                     <h2 class="text-3xl mb-3">
                         {{ $category->name }}
-                        (id {{ $category->id }})
+                        {{-- (id {{ $category->id }}) --}}
                     </h2>
 
                     <a class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2 mb-3" href="{{ route('categories.show', $category) }}">Voir</a>

@@ -16,10 +16,16 @@
                 <div class="flex flex-col w-1/4 text-center p-3 bg-white border-black cursor-pointer rounded-lg">
                     <h2 class="text-2xl mb-3">{{ $movie->title }}</h2>
                     {{-- <p class="mb-3">{{ $movie->synopsis }}</p> --}}
-                    <img src="{{ $movie->cover }}" alt="">
-                    <p class="text-xl text-bold">{{ $movie->duration }} minutes</p>
-                    {{-- <p>{{ $movie->category->name }}</p> --}}
-
+                    <img class="mb-3" src="{{ $movie->cover }}" alt="">
+                    <p class="mb-3">
+                        @if ($movie->category)
+                            {{ $movie->category->name }} | 
+                        @endif
+                        @if ($movie->released_at) 
+                            {{ $movie->released_at->translatedFormat('d F Y') }}
+                        @endif
+                    </p>
+                    <p class="text-xl text-bold mb-3">{{ $movie->duration }}</p>
                     <a class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2" href="{{ route('movies.show', $movie) }}">Voir</a>
                 </div>
             @endforeach
