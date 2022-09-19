@@ -40,8 +40,6 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        
-
         return view('categories.edit', [
             'category' => $category,
         ]);
@@ -77,7 +75,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('categories')->with('status', 'La catégorie '.$category->name.' a été modifiée.');
+        return redirect()->route('categories')->with('status', 'La catégorie '.$category->name.' a été supprimée.');
 
     }
 }

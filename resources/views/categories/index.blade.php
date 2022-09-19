@@ -6,11 +6,10 @@
 
 @section('content')
 
-
     <div class="flex flex-col w-3/5 mx-auto">
 
         @if (session('status'))
-            <div class="bg-emerald-600 text-center text-white text-2xl rounded-lg p-2">
+            <div class="w-3/5 mx-auto bg-emerald-600 text-center text-white text-2xl rounded-lg p-2">
                 {{ session('status') }}
             </div>  
         @endif
@@ -36,9 +35,8 @@
                     </form>
                 </div>
             @endforeach
-
-            
         </div>
+
         <div class="w-full mt-6">
             {{ $categories->links() }}
         </div>

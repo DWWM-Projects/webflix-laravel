@@ -23,7 +23,7 @@ class Movie extends Model
             $minutes = $value % 60;
             $minutes = $minutes < 10 ? '0'.$minutes : $minutes;
 
-            return $hours .' h '. $minutes . 'min' ;
+            return $hours .' h '. $minutes . ' min' ;
         });
     }
 
@@ -32,7 +32,8 @@ class Movie extends Model
         return $this->belongsTo(Category::class);
     }
 
-    
-
-
+    public function actors()
+    {
+        return $this->belongsToMany(Actor::class);
+    }
 }

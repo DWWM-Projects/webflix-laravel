@@ -6,11 +6,18 @@
 
 @section('content')
 
-
     <div class="flex flex-col w-3/5 mx-auto">
+
+        @if (session('status'))
+            <div class="w-3/5 mx-auto bg-emerald-600 text-center text-white text-2xl rounded-lg p-2">
+                {{ session('status') }}
+            </div>
+        @endif
+
         <div class="p-6">
             <a class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2" href="{{ route('movies.create') }}">Ajouter un film</a>
         </div>
+
         <div class="flex flex-row flex-wrap justify-between gap-3 p-6">
             @foreach ($movies as $movie)
                 <div class="flex flex-col w-1/4 text-center p-3 bg-white border-black cursor-pointer rounded-lg">
@@ -26,12 +33,18 @@
                         @endif
                     </p>
                     <p class="text-xl text-bold mb-3">{{ $movie->duration }}</p>
-                    <a class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2" href="{{ route('movies.show', $movie) }}">Voir</a>
+                    
+                    <a class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2 mb-3" href="{{ route('movies.show', $movie) }}">Voir</a>
+                    <a class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2 mb-3" href="{{ route('movies.edit', $movie->id) }}">Modifier</a>
+                    <form action="{{ route('movies.delete', $movie->id) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2 mb-3">Supprimer</button>
+                    </form>
                 </div>
             @endforeach
-
-            
         </div>
+
         <div class="w-full mt-6">
             {{ $movies->links() }}
         </div>
@@ -39,6 +52,7 @@
         <div class="text-center text-blue-600 text-xl hover:text-white my-3">
             <a href="{{ route('home') }}">Accueil</a>
         </div>
+
     </div>    
 
 @endsection

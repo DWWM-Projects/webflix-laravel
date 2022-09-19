@@ -1,9 +1,5 @@
 @extends('layouts.base')
 
-{{-- @section('header')
-    @parent
-@endsection --}}
-
 @section('content')
 
     <h1 class="text-center text-5xl my-6">Coucou {{ $name }}</h1>

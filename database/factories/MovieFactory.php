@@ -26,7 +26,6 @@ class MovieFactory extends Factory
             'cover' => fake()->imageUrl(),
             'released_at' => fake()->date(),
             'category_id' => Category::factory(),
-
         ];
     }
 }
