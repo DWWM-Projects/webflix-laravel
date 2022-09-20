@@ -31,14 +31,11 @@
         <div class="flex flex-row items-center gap-3">
             @auth
                 <p class="flex items-center text-3xl">Bonjour {{ Auth::user()->name }}</p>
-                <a class="flex items-center text-3xl hover:text-white" href="{{ route('logout') }}">Déconnexion</a>
-                
+                <a class="flex items-center text-3xl hover:text-white" href="{{ route('logout') }}">Déconnexion</a>                
             @else
                 <a class="flex items-center text-3xl hover:text-white" href="{{ route('login') }}">Login</a>
-                <a class="flex items-center text-3xl hover:text-white" href="#">Register</a>
-            
-            @endauth
-            
+                <a class="flex items-center text-3xl hover:text-white" href="{{ route('register') }}">S'inscrire</a>
+            @endauth            
         </div>
     </header>
 
