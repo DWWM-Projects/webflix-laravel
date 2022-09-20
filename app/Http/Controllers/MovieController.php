@@ -26,8 +26,6 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
-
-
         $validated = $request->validate([
             'title' => 'required|min:2',
             'synopsis' => 'required|min:10',
@@ -43,6 +41,8 @@ class MovieController extends Controller
             $validated['cover'] = '/storage/'.$request->file('cover')->store('cover');
         }
 
+        $validated['user_id'] = $request->user()->id;
+
         // $movie = new Movie();
         // $movie->title = $request->title;
         // $movie->synopsis = $request->synopsis;
@@ -53,7 +53,8 @@ class MovieController extends Controller
         // $movie->save();
 
         // On doit inclure le champs actor_ids du tableau $validated
-        $movie = Movie::create(collect($validated)->except('actor_ids')->all());
+        // $movie = Movie::create(collect($validated)->except('actor_ids')->all());
+        $movie = $request->user()->movies()->create(collect($validated)->except('actor_ids')->all());
         $movie->actors()->attach($validated['actor_ids']);
 
         return redirect()->route('movies');
@@ -70,6 +71,11 @@ class MovieController extends Controller
 
     public function update(Movie $movie, Request $request)
     {
+        $this->authorize('update', $movie);
+        // if ($movie->user_id === request()->user()->id) {
+        //     abort(403);
+        // }
+
         $movieName = $movie->title;
 
         $validated = $request->validate([
@@ -104,6 +110,8 @@ class MovieController extends Controller
 
     public function destroy(Movie $movie)
     {
+        $this->authorize('delete', $movie);
+
         $movie->delete();
 
         return redirect()->route('movies')->with('status', 'Le film '.$movie->title.' a été supprimé.');

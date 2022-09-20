@@ -58,26 +58,20 @@ Route::get('/acteurs', [ActorController::class, 'index'])->name('actors');
 Route::get('/acteurs/{actor}', [ActorController::class, 'show'])->name('actors.show');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-
 Route::post('/login', [LoginController::class, 'store']);
-
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout')->middleware('auth');
 
 Route::get('/inscription', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/inscription', [RegisterController::class, 'store'])->middleware('guest');
 
 Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, 'update'])->middleware(['auth', 'signed'])->name('verification.verify');
-
 Route::get('/email/verify', [VerifyEmailController::class, 'index'])->middleware('auth')->name('verification.notice');
-
 Route::get('/email/verification-notification', [VerifyEmailController::class, 'store'])->middleware(['auth', 'throttle:2,1'])->name('verification.send');
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->middleware('guest')->name('password.request');
-
 Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->middleware('guest')->name('password.email');
 
 Route::get('/reset-password/{token}', [ResetPasswordController::class, 'index'])->middleware('guest')->name('password.reset');
-
 Route::post('/reset-password', [ResetPasswordController::class, 'store'])->middleware('guest')->name('password.update');
 
 Route::get('/profil', function () {

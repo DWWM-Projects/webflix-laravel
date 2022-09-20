@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ( $i = 1; $i < 51; $i++) {
+        for ( $i = 1; $i < 5; $i++) {
             $movies = $client->get('https://api.themoviedb.org/3/movie/popular?api_key='.$key.'&language=fr-FR&page='.$i)->json('results');
             foreach ($movies as $movie) {
 

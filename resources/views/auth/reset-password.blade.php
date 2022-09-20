@@ -13,32 +13,30 @@
         <p>{{ session('status') }}</p>
     @endif
 
-    <form action="{{ route('password.update') }}" method="post">
-        @csrf
+    <div class="w-3/5 mx-auto text-center my-6">
 
-        @error('password')
-            {{ $message }}
-        @enderror
+        <form class="w-2/3 mx-auto flex flex-col items-center text-center gap-2" action="{{ route('password.update') }}" method="post">
+            @csrf
 
-        <div>
+            @error('password')
+                {{ $message }}
+            @enderror
+
+            
             <input type="hidden" name="token" value="{{ $token }}">
-        </div>
+        
+            <label class="text-2xl text-bold mb-1" for="email">Email</label>
+            <input class="rounded-lg p-2 mb-6" type="text" name="email" id="email" value="">
+        
+            <label class="text-2xl text-bold mb-1" for="password">Mot de passe</label>
+            <input class="rounded-lg p-2 mb-6" type="password" name="password" id="password">
+        
+            <label class="text-2xl text-bold mb-1" for="password_confirmation">Confirmez le mot de passe</label>
+            <input class="rounded-lg p-2 mb-6" type="password" name="password_confirmation" id="password_confirmation">   
 
-        <div>
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" value="">
-        </div>
+            <button class="bg-blue-300 hover:bg-red-300 duration-500 text-white rounded-lg p-2">Réinitialiser</button>
 
-        <div>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password">
-        </div>
+        </form>
 
-        <div>
-            <label for="password_confirmation">Confirmez le mot de passe</label>
-            <input type="password" name="password_confirmation" id="password_confirmation">
-        </div>
-      
-        <button>Réinitialiser</button>
-    </form>
+    </div>
 @endsection
